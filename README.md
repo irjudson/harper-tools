@@ -1,7 +1,9 @@
 # Harper Tools
 
 **What it is:** Batteries-included developer toolbox for Harper.
+
 **Why it matters:** Get Harper running with monitoring in under a minute.
+
 **The bottom line:** Everything works out of the box.
 
 ## Quick Start
