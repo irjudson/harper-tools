@@ -1,6 +1,7 @@
-# Harper Docker Monitoring Stack
+# Harper Docker Stack
 
-A Docker Compose setup for running Harper with Grafana monitoring dashboards.
+**What it is:** Ready-to-run Harper with Grafana monitoring.
+**Why use it:** Switch between single and cluster modes without reconfiguration.
 
 ## Quick Start
 
@@ -14,55 +15,56 @@ docker-compose --profile single up -d
 docker-compose --profile cluster up -d
 ```
 
-### Access Grafana
-- **URL**: http://localhost:3000
-- **Login**: admin / admin
-- **Dashboard**: http://localhost:3000/d/harperdb-monitoring
+## Access Points
 
-## Project Structure
+**Harper**
+- Single/Node-0: http://localhost:9925
+- Node-1: http://localhost:9935
+- Node-2: http://localhost:9945
+- Credentials: admin/HarperRocks!
+
+**Grafana**
+- URL: http://localhost:3000
+- Credentials: admin/admin
+- Dashboard: http://localhost:3000/d/harperdb-monitoring
+
+![Grafana Dashboard](docs/single-instance-grafana.png)
+*Harper metrics dashboard for a single instance*
+
+## Project Files
 
 ```
 .
-├── docker-compose.yml           # Main orchestration file
-├── .env.example                 # Environment variables template
-├── scripts/                     # Utility scripts
-│   └── setup-grafana.sh        # Grafana dashboard setup script
-├── data/                       # Transient data for Docker containers (auto-created)
-│   ├── harper/                 # Harper single node data
-│   ├── harper-node-0/          # Cluster node 0 data
-│   ├── harper-node-1/          # Cluster node 1 data
-│   ├── harper-node-2/          # Cluster node 2 data
-│   └── grafana/                # Grafana data
-├── docs/                       # Documentation
-│   └── DATA-FORMAT-ANALYSIS.md # Harper data format documentation
-├── README.md                   # This file
-└── USAGE_GUIDE.md              # Detailed usage instructions
+├── docker-compose.yml          # Main config
+├── .env.example               # Environment template
+├── scripts/
+│   └── setup-grafana.sh      # Auto-setup dashboard
+├── data/                     # Container volumes (auto-created)
+└── docs/                     # Documentation
+```
+
+## How It Works
+
+1. **Consistent naming** - `harper-0` exists in both modes
+2. **Same datasource** - Grafana always points to `harper-0:9925`
+3. **Auto-provisioning** - Dashboards configured on startup
+4. **No manual changes** - Switch modes freely
+
+## Requirements
+
+- Docker Compose 2.0+
+- 4GB+ RAM for cluster
+- Ports: 3000, 9925-9946
+
+## Troubleshooting
+
+```bash
+# Clean restart
+docker-compose down
+docker-compose --profile single up -d
 ```
 
 ## Documentation
 
-- **[Usage Guide](USAGE_GUIDE.md)** - Detailed usage instructions
-- **[Data Format Analysis](docs/DATA-FORMAT-ANALYSIS.md)** - Understanding Harper data formats
-
-## Services
-
-### Harper
-- **Single Node**: http://localhost:9925
-- **Cluster Node 0**: http://localhost:9925
-- **Cluster Node 1**: http://localhost:9935
-- **Cluster Node 2**: http://localhost:9945
-- **Credentials**: admin / HarperRocks!
-
-### Grafana
-- **URL**: http://localhost:3000
-- **Credentials**: admin / admin
-
-## Requirements
-
-- Docker & Docker Compose
-- 4GB+ RAM for cluster mode
-- Available ports:
-  - 3000 (Grafana)
-  - 9925, 9926 (Harper single node or cluster node 0)
-  - 9935, 9936 (Harper cluster node 1)
-  - 9945, 9946 (Harper cluster node 2)
+- [Usage Guide](USAGE_GUIDE.md)
+- [Data Formats](docs/DATA-FORMAT-ANALYSIS.md)

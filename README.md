@@ -1,132 +1,80 @@
 # Harper Tools
 
-A batteries-included developer toolbox for working with Harper. This repository provides everything you need to quickly spin up Harper instances with monitoring, whether for development, testing, or evaluation purposes.
+**What it is:** Batteries-included developer toolbox for Harper.
+**Why it matters:** Get Harper running with monitoring in under a minute.
+**The bottom line:** Everything works out of the box.
 
-## 🚀 Quick Start
-
-Get Harper running with monitoring in under a minute:
+## Quick Start
 
 ```bash
-# Clone the repository
 git clone https://github.com/yourusername/harper-tools.git
-cd harper-tools
-
-# Start Harper with Grafana monitoring
-cd docker
+cd harper-tools/docker
 docker-compose up -d
-
-# Access the services
-# Harper: http://localhost:9925 (admin/HarperRocks!)
-# Grafana: http://localhost:3000 (admin/admin)
 ```
 
-## 🎁 What's Included
+**Harper:** http://localhost:9925 (admin/HarperRocks!)
+**Grafana:** http://localhost:3000 (admin/admin)
 
-### Docker Environment (`/docker`)
-Complete Docker Compose setup with multiple deployment options:
-- **Single Node Mode** - Perfect for development and testing
-- **3-Node Cluster Mode** - Test replication and clustering features
-- **Pre-configured Grafana** - Monitoring dashboards auto-provisioned
-- **Automatic Setup** - Grafana datasources and dashboards configured automatically
+## What's Included
 
-### Key Features
-- **Zero Configuration** - Everything works out of the box
-- **Consistent Naming** - Seamlessly switch between single and cluster modes
-- **Health Checks** - All services include proper health monitoring
-- **Graceful Shutdown** - Proper stop procedures for data safety
-- **Persistent Data** - Data volumes preserved between restarts
+**Docker environment** with two modes:
+- **Single node** - Development and testing
+- **3-node cluster** - Replication and HA testing
 
-## 📁 Project Structure
+**Key features:**
+- Zero configuration
+- Auto-provisioned monitoring
+- Persistent data volumes
+- Health checks included
 
-```
-harper-tools/
-├── docker/                    # Docker-based Harper environment
-│   ├── docker-compose.yml     # Main orchestration file
-│   ├── scripts/               # Setup and utility scripts
-│   ├── data/                  # Persistent data volumes (auto-created)
-│   └── docs/                  # Detailed docker documentation
-└── docs/                      # General project documentation
-```
+## Requirements
 
-## 🛠 Available Configurations
+- Docker & Docker Compose 2.0+
+- 4GB RAM (8GB for cluster)
+- Ports: 3000, 9925-9946
 
-### Single Node Deployment
-Perfect for:
-- Local development
-- API testing
-- Learning Harper
-- Quick prototypes
+## Deployment Options
 
+### Single Node
 ```bash
-cd docker
 docker-compose --profile single up -d
 ```
+Best for: Development, API testing, learning
 
-### 3-Node Cluster Deployment
-Perfect for:
-- Testing replication
-- High availability scenarios
-- Performance testing
-- Production-like environments
-
+### Cluster (3 nodes)
 ```bash
-cd docker
 docker-compose --profile cluster up -d
 ```
+Best for: Replication testing, HA scenarios, performance testing
 
-## 📊 Monitoring & Observability
+## Documentation
 
-Grafana comes pre-configured with Harper monitoring dashboards:
-- Real-time metrics visualization
-- Query performance monitoring
-- Resource utilization tracking
-- Cluster health overview (in cluster mode)
+- [Docker Setup](docker/README.md)
+- [Usage Guide](docker/USAGE_GUIDE.md)
+- [Data Formats](docker/docs/DATA-FORMAT-ANALYSIS.md)
 
-Access Grafana at http://localhost:3000 and navigate to the Harper dashboard.
+## Use Cases
 
-## 🔧 Requirements
+- **Developers** - Local development with monitoring
+- **DevOps** - Test deployments and clustering
+- **Architects** - Evaluate Harper capabilities
+- **QA** - Consistent test environments
+- **Learning** - Explore Harper features
 
-- Docker & Docker Compose (v2.0+)
-- 4GB RAM minimum (8GB recommended for cluster mode)
-- Available ports:
-  - 3000 (Grafana)
-  - 9925-9927 (Harper Operations API)
-  - 9926-9946 (Harper Application API)
+## Contributing
 
-## 📚 Documentation
+Contributions welcome:
+- New deployment configurations
+- Monitoring improvements
+- Utility scripts
+- Documentation
 
-- [Docker Setup Guide](docker/README.md) - Detailed Docker environment documentation
-- [Usage Guide](docker/USAGE_GUIDE.md) - How to use the Docker setup
-- [Data Format Analysis](docker/docs/DATA-FORMAT-ANALYSIS.md) - Understanding Harper data formats
+## License
 
-## 🎯 Use Cases
+Apache 2.0 - See [LICENSE](LICENSE)
 
-This toolbox is designed for:
+## Resources
 
-- **Developers** - Quick local development environment with monitoring
-- **DevOps Engineers** - Test deployment configurations and clustering
-- **Solution Architects** - Evaluate Harper capabilities
-- **QA Engineers** - Consistent test environments
-- **Learning** - Explore Harper features with a complete setup
-
-## 🤝 Contributing
-
-Contributions are welcome! Feel free to:
-- Add new deployment configurations
-- Improve monitoring dashboards
-- Add utility scripts
-- Enhance documentation
-
-## 📝 License
-
-This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENSE) file for details.
-
-## 🔗 Resources
-
-- [Harper Documentation](https://docs.harperdb.io)
-- [Harper Docker Hub](https://hub.docker.com/r/harperdb/harperdb)
-- [Grafana Documentation](https://grafana.com/docs)
-
----
-
-Built with ❤️ for the Harper developer community
+- [Harper Docs](https://docs.harperdb.io)
+- [Docker Hub](https://hub.docker.com/r/harperdb/harperdb)
+- [Grafana](https://grafana.com/docs)
