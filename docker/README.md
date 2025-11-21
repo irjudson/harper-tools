@@ -1,9 +1,10 @@
 # Harper Docker Stack
 
 **What it is:** Ready-to-run Harper with Grafana monitoring.
+
 **Why use it:** Switch between single and cluster modes without reconfiguration.
 
-## Quick Start
+## 🚀 Quick Start
 
 ### Single Node
 ```bash
@@ -25,10 +26,10 @@ docker-compose --profile cluster up -d
 
 **Grafana**
 - URL: http://localhost:3000
-- Credentials: admin/admin
+- Credentials: admin/HarperRocks!
 - Dashboard: http://localhost:3000/d/harperdb-monitoring
 
-![Grafana Dashboard](docs/single-instance-grafana.png)
+📊 ![Grafana Dashboard](docs/single-instance-grafana.png)
 *Harper metrics dashboard for a single instance*
 
 ## Project Files

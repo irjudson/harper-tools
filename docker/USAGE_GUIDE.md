@@ -52,7 +52,7 @@ docker-compose up -d
 
 - **Grafana**: http://localhost:3000
   - Username: `admin`
-  - Password: `admin`
+  - Password: `HarperRocks!`
 
 ## Verify Setup
 
