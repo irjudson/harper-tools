@@ -29,10 +29,10 @@ docker-compose --profile cluster up -d
 - Credentials: admin/HarperRocks!
 - Dashboard: http://localhost:3000/d/harperdb-monitoring
 
-[Grafana Single Harper Instance Dashboard](docs/single-instance-grafana.png)
+![Grafana Single Harper Instance Dashboard](docs/single-instance-grafana.png)
 *Harper metrics dashboard for a single instance*
 
-[Grafana Multiple Harper Instance Dashboard](docs/multiple-instance-grafana.png)
+![Grafana Multiple Harper Instance Dashboard](docs/multiple-instance-grafana.png)
 *Harper metrics dashboard for a multiple instances*
 
 
